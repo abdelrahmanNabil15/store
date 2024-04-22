@@ -61,15 +61,15 @@ class AppPreferences {
   //   return _sharedPreferences.getBool(PREFS_KEY_ON_BOARDING_SCREEN_VIEWED) ?? false;
   // }
   //
-  // //Login
-  // Future<void> setUserLogged() async {
-  //   _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
-  // }
-  //
-  // Future<bool> isUserLogged() async {
-  //   return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
-  // }
-  //
+  //Login
+  Future<void> setUserLogged() async {
+    _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
+  }
+
+  Future<bool> isUserLogged() async {
+    return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
+  }
+
   // //register
   //
   //
