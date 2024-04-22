@@ -30,7 +30,7 @@ Failure _handleError(DioException error) {
       return DataSource.RECIEVE_TIMEOUT.getFailure();
     case DioExceptionType.badResponse:
       if (error.response != null && error.response?.statusCode != null && error.response?.statusMessage != null) {
-        return Failure(error.response?.statusCode ?? 0, error.response?.data["message"] ?? "");
+        return Failure(code: error.response?.statusCode ?? 0,  message: error.response?.data["message"] ?? "");
       } else {
         return DataSource.DEFAULT.getFailure();
       }
@@ -63,37 +63,37 @@ extension DataSourceExtension on DataSource {
     var mContext = navigatorKey!.currentState!.context;
     switch (this) {
       case DataSource.SUCCESS:
-        return Failure(ResponseCode.SUCCESS, ResponseMessage.SUCCESS.tr(mContext));
+        return Failure(code: ResponseCode.SUCCESS, message: ResponseMessage.SUCCESS.tr(mContext));
       case DataSource.NO_CONTENT:
-        return Failure(ResponseCode.NO_CONTENT, ResponseMessage.NO_CONTENT.tr(mContext));
+        return Failure(code: ResponseCode.NO_CONTENT, message: ResponseMessage.NO_CONTENT.tr(mContext));
       case DataSource.BAD_REQUEST:
-        return Failure(ResponseCode.BAD_REQUEST, ResponseMessage.BAD_REQUEST.tr(mContext));
+        return Failure(code: ResponseCode.BAD_REQUEST, message: ResponseMessage.BAD_REQUEST.tr(mContext));
       case DataSource.FORBIDDEN:
-        return Failure(ResponseCode.FORBIDDEN, ResponseMessage.FORBIDDEN.tr(mContext));
+        return Failure( code: ResponseCode.FORBIDDEN,message:  ResponseMessage.FORBIDDEN.tr(mContext));
       case DataSource.UNAUTORISED:
-        return Failure(ResponseCode.UNAUTORISED, ResponseMessage.UNAUTORISED.tr(mContext));
+        return Failure( code: ResponseCode.UNAUTORISED,message:  ResponseMessage.UNAUTORISED.tr(mContext));
       case DataSource.NOT_FOUND:
-        return Failure(ResponseCode.NOT_FOUND, ResponseMessage.NOT_FOUND.tr(mContext));
+        return Failure(code: ResponseCode.NOT_FOUND,message:  ResponseMessage.NOT_FOUND.tr(mContext));
       case DataSource.INTERNAL_SERVER_ERROR:
-        return Failure(ResponseCode.INTERNAL_SERVER_ERROR,
-            ResponseMessage.INTERNAL_SERVER_ERROR.tr(mContext));
+        return Failure( code: ResponseCode.INTERNAL_SERVER_ERROR,
+           message:  ResponseMessage.INTERNAL_SERVER_ERROR.tr(mContext));
       case DataSource.CONNECT_TIMEOUT:
         return Failure(
-            ResponseCode.CONNECT_TIMEOUT, ResponseMessage.CONNECT_TIMEOUT.tr(mContext));
+          code:   ResponseCode.CONNECT_TIMEOUT,message:  ResponseMessage.CONNECT_TIMEOUT.tr(mContext));
       case DataSource.CANCEL:
-        return Failure(ResponseCode.CANCEL, ResponseMessage.CANCEL.tr(mContext));
+        return Failure(code: ResponseCode.CANCEL,message:  ResponseMessage.CANCEL.tr(mContext));
       case DataSource.RECIEVE_TIMEOUT:
         return Failure(
-            ResponseCode.RECIEVE_TIMEOUT, ResponseMessage.RECIEVE_TIMEOUT.tr(mContext));
+        code:    ResponseCode.RECIEVE_TIMEOUT,message:  ResponseMessage.RECIEVE_TIMEOUT.tr(mContext));
       case DataSource.SEND_TIMEOUT:
-        return Failure(ResponseCode.SEND_TIMEOUT, ResponseMessage.SEND_TIMEOUT.tr(mContext));
+        return Failure(code:  ResponseCode.SEND_TIMEOUT,message:  ResponseMessage.SEND_TIMEOUT.tr(mContext));
       case DataSource.CACHE_ERROR:
-        return Failure(ResponseCode.CACHE_ERROR, ResponseMessage.CACHE_ERROR.tr(mContext));
+        return Failure( code: ResponseCode.CACHE_ERROR, message: ResponseMessage.CACHE_ERROR.tr(mContext));
       case DataSource.NO_INTERNET_CONNECTION:
-        return Failure(ResponseCode.NO_INTERNET_CONNECTION,
-            ResponseMessage.NO_INTERNET_CONNECTION.tr(mContext));
+        return Failure(code: ResponseCode.NO_INTERNET_CONNECTION,
+         message:    ResponseMessage.NO_INTERNET_CONNECTION.tr(mContext));
       case DataSource.DEFAULT:
-        return Failure(ResponseCode.DEFAULT, ResponseMessage.DEFAULT.tr(mContext));
+        return Failure( code: ResponseCode.DEFAULT,message:  ResponseMessage.DEFAULT.tr(mContext));
     }
   }
 }
