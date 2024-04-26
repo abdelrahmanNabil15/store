@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:store/core/app/app_prefs.dart';
+import 'package:store/core/app/di.dart';
 
 import '../../core/util/routes_manager.dart';
-
+final AppPreferences _appPref = instance<AppPreferences>();
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -29,7 +31,12 @@ class _SplashViewState extends State<SplashView> {
   }
 
   _goNext() async {
+    if (await _appPref.isUserLogged() ){
     Navigator.pushReplacementNamed(context, Routes.homeRoute);
+    }else{
+      Navigator.pushReplacementNamed(context, Routes.loginRoute);
+
+    }
   }
 
   @override

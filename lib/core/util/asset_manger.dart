@@ -2,7 +2,7 @@ const String IMAGE_PATH = "assets/images";
 const String JSON_PATH = "assets/json";
 
 class ImageAssets {
-  static String imgNewPlaceHolder = "$IMAGE_PATH/img_new_place_holder.jpg";
+  static String imgPerson = "$IMAGE_PATH/Pic_profile1.png";
 }
 
 class JsonAssets {

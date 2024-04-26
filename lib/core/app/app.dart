@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:store/core/app/di.dart';
 import 'package:store/core/util/langauge_manager.dart';
 import 'package:store/core/util/routes_manager.dart';
+import 'package:store/features/authentication/presentation/bloc/auth_bloc.dart';
 
 import '../../presentation/home/bloc/change_language_bloc.dart';
 
@@ -28,6 +30,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ChangeLanguageBloc(),
+
+        ),
+        BlocProvider(
+          create: (context) =>   instance<AuthBloc>(),
+
         ),
       ],
       child: BlocBuilder<ChangeLanguageBloc, ChangeLanguageState>(

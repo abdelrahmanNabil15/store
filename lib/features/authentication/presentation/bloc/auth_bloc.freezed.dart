@@ -246,25 +246,22 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String? data) success,
+    required TResult Function(String token) success,
     required TResult Function(String message) failure,
-    required TResult Function() empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String? data)? success,
+    TResult? Function(String token)? success,
     TResult? Function(String message)? failure,
-    TResult? Function()? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? data)? success,
+    TResult Function(String token)? success,
     TResult Function(String message)? failure,
-    TResult Function()? empty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -273,7 +270,6 @@ mixin _$AuthState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Empty value) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -281,7 +277,6 @@ mixin _$AuthState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Empty value)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -289,7 +284,6 @@ mixin _$AuthState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -351,9 +345,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String? data) success,
+    required TResult Function(String token) success,
     required TResult Function(String message) failure,
-    required TResult Function() empty,
   }) {
     return loading();
   }
@@ -362,9 +355,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String? data)? success,
+    TResult? Function(String token)? success,
     TResult? Function(String message)? failure,
-    TResult? Function()? empty,
   }) {
     return loading?.call();
   }
@@ -373,9 +365,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? data)? success,
+    TResult Function(String token)? success,
     TResult Function(String message)? failure,
-    TResult Function()? empty,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -390,7 +381,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Empty value) empty,
   }) {
     return loading(this);
   }
@@ -401,7 +391,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Empty value)? empty,
   }) {
     return loading?.call(this);
   }
@@ -412,7 +401,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -432,7 +420,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? data});
+  $Res call({String token});
 }
 
 /// @nodoc
@@ -446,13 +434,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? token = null,
   }) {
     return _then(_$SuccessImpl(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as String?,
+      null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -460,14 +448,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.data);
+  const _$SuccessImpl(this.token);
 
   @override
-  final String? data;
+  final String token;
 
   @override
   String toString() {
-    return 'AuthState.success(data: $data)';
+    return 'AuthState.success(token: $token)';
   }
 
   @override
@@ -475,11 +463,11 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, token);
 
   @JsonKey(ignore: true)
   @override
@@ -491,35 +479,32 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String? data) success,
+    required TResult Function(String token) success,
     required TResult Function(String message) failure,
-    required TResult Function() empty,
   }) {
-    return success(data);
+    return success(token);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String? data)? success,
+    TResult? Function(String token)? success,
     TResult? Function(String message)? failure,
-    TResult? Function()? empty,
   }) {
-    return success?.call(data);
+    return success?.call(token);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? data)? success,
+    TResult Function(String token)? success,
     TResult Function(String message)? failure,
-    TResult Function()? empty,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success(token);
     }
     return orElse();
   }
@@ -530,7 +515,6 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Empty value) empty,
   }) {
     return success(this);
   }
@@ -541,7 +525,6 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Empty value)? empty,
   }) {
     return success?.call(this);
   }
@@ -552,7 +535,6 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -563,9 +545,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements AuthState {
-  const factory _Success(final String? data) = _$SuccessImpl;
+  const factory _Success(final String token) = _$SuccessImpl;
 
-  String? get data;
+  String get token;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -636,9 +618,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String? data) success,
+    required TResult Function(String token) success,
     required TResult Function(String message) failure,
-    required TResult Function() empty,
   }) {
     return failure(message);
   }
@@ -647,9 +628,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String? data)? success,
+    TResult? Function(String token)? success,
     TResult? Function(String message)? failure,
-    TResult? Function()? empty,
   }) {
     return failure?.call(message);
   }
@@ -658,9 +638,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? data)? success,
+    TResult Function(String token)? success,
     TResult Function(String message)? failure,
-    TResult Function()? empty,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -675,7 +654,6 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Empty value) empty,
   }) {
     return failure(this);
   }
@@ -686,7 +664,6 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Empty value)? empty,
   }) {
     return failure?.call(this);
   }
@@ -697,7 +674,6 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -714,118 +690,4 @@ abstract class _Failure implements AuthState {
   @JsonKey(ignore: true)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$EmptyImplCopyWith<$Res> {
-  factory _$$EmptyImplCopyWith(
-          _$EmptyImpl value, $Res Function(_$EmptyImpl) then) =
-      __$$EmptyImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$EmptyImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$EmptyImpl>
-    implements _$$EmptyImplCopyWith<$Res> {
-  __$$EmptyImplCopyWithImpl(
-      _$EmptyImpl _value, $Res Function(_$EmptyImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$EmptyImpl implements _Empty {
-  const _$EmptyImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.empty()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EmptyImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(String? data) success,
-    required TResult Function(String message) failure,
-    required TResult Function() empty,
-  }) {
-    return empty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(String? data)? success,
-    TResult? Function(String message)? failure,
-    TResult? Function()? empty,
-  }) {
-    return empty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(String? data)? success,
-    TResult Function(String message)? failure,
-    TResult Function()? empty,
-    required TResult orElse(),
-  }) {
-    if (empty != null) {
-      return empty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Empty value) empty,
-  }) {
-    return empty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Empty value)? empty,
-  }) {
-    return empty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Empty value)? empty,
-    required TResult orElse(),
-  }) {
-    if (empty != null) {
-      return empty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Empty implements AuthState {
-  const factory _Empty() = _$EmptyImpl;
 }

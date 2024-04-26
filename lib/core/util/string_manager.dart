@@ -17,4 +17,12 @@ class AppStrings {
   static const String strDefaultError = "default_error";
   static const String strCacheError = "cache_error";
   static const String strNoInternetError = "no_internet_error";
+  static const String username = "username";
+  static const String password = "password";
+  static const String login = "login";
+  static const String pleaseWait = "pleaseWait";
+  static const String welcomeBack = "welcomeBack";
+  static const String pleaseEnterUserName = "pleaseEnterUserName";
+  static const String pleaseEnterPassword = "pleaseEnterPassword";
+
 }

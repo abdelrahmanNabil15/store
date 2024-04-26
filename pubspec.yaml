@@ -23,6 +23,7 @@ dependencies:
   freezed: ^2.5.2
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
+  fluttertoast: ^8.2.5
   flutter_localizations:
     sdk: flutter
 

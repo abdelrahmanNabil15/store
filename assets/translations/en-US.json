@@ -13,5 +13,13 @@
   "timeout_error": "time out, try again late",
   "default_error": "some thing went wrong, try again later",
   "cache_error": "cache error, try again later",
-  "no_internet_error": "Please check your internet connection"
+  "no_internet_error": "Please check your internet connection" ,
+  "username": "UserName",
+  "password": "Password",
+  "login": "Login",
+  "pleaseWait": "Please wait ",
+  "welcomeBack" :"Welcome Back",
+  "pleaseEnterUserName": "Please enter username",
+  "pleaseEnterPassword": "Please enter Password"
+
 }

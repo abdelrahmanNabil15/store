@@ -2,6 +2,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:store/features/authentication/data/data_sources/auth_remote_data_source.dart';
+import 'package:store/features/authentication/data/repositories/auth_repository_imp.dart';
+import 'package:store/features/authentication/domain/repositories/auth_repository.dart';
+import 'package:store/features/authentication/domain/usecase/login_usecase.dart';
+import 'package:store/features/authentication/presentation/bloc/auth_bloc.dart';
 
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
@@ -30,7 +35,35 @@ Future<void> initAppModule() async {
 
   //AppServiceClient instance
   instance.registerLazySingleton(() => ApiService(dio));
+  dataSources();
+  repositories();
+  useCase();
+  bloc();
 
-  // instance.registerFactory<Repository>(() => RepositoryImpl(instance(), instance(), instance()));
-  // instance.registerFactory<GetArticlesUseCase>(() => GetArticlesUseCase(instance()));
+}
+void repositories() {
+  instance.registerFactory<Authentication>(() => AuthenticationRepositoryImp(instance(), ));
+
+}
+
+/// Register dataSources
+void dataSources() {
+  instance.registerLazySingleton<AuthenticationRemoteDataSource>(
+        () => AuthenticationRemoteDataSourceImp(instance()),
+  );
+
+}
+
+void useCase() {
+  /// Auth
+  instance.registerFactory<LoginUseCase>(() => LoginUseCase(instance()));
+
+}
+
+void bloc() {
+
+  ///
+  instance.registerFactory(() => AuthBloc(instance()));
+
+
 }
