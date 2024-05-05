@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/core/util/langauge_manager.dart';
+import 'package:store/features/products/presentation/pages/products_view.dart';
 import '../../features/authentication/presentation/pages/login_view.dart';
 import '../../presentation/home/view/home_view.dart';
 import '../../presentation/splash/splash_view.dart';
@@ -9,6 +10,7 @@ class Routes {
   static const String splashRoute = "/";
   static const String homeRoute = "/home";
   static const String loginRoute = "/login";
+  static const String allProductsRoute = "/allProduct";
 }
 
 class RouteGenerator {
@@ -19,7 +21,9 @@ class RouteGenerator {
       case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => HomeView());
         case Routes.loginRoute:
-        return MaterialPageRoute(builder: (_) =>   LoginPage());
+        return MaterialPageRoute(builder: (_) =>   const LoginPage());
+        case Routes.allProductsRoute:
+        return MaterialPageRoute(builder: (_) =>   const ProductView());
       default:
         return unDefinedRoute();
     }

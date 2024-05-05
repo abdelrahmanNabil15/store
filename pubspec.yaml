@@ -22,7 +22,8 @@ dependencies:
   dartz: ^0.10.1
   freezed: ^2.5.2
   json_annotation: ^4.8.1
-  json_serializable: ^6.7.1
+  equatable: ^2.0.5
+
   fluttertoast: ^8.2.5
   flutter_localizations:
     sdk: flutter
@@ -32,7 +33,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
+  json_serializable: ^6.7.1
   flutter_lints: ^2.0.0
   build_runner: ^2.4.9
 

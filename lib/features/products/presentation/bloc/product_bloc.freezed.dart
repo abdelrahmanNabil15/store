@@ -18,33 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() fetchAllProducts,
+    required TResult Function(int productId) fetchProductById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? fetchAllProducts,
+    TResult? Function(int productId)? fetchProductById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetchAllProducts,
+    TResult Function(int productId)? fetchProductById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_FetchAllProducts value) fetchAllProducts,
+    required TResult Function(_FetchProductById value) fetchProductById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult? Function(_FetchProductById value)? fetchProductById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult Function(_FetchProductById value)? fetchProductById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,35 +75,35 @@ class _$ProductEventCopyWithImpl<$Res, $Val extends ProductEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$FetchAllProductsImplCopyWith<$Res> {
+  factory _$$FetchAllProductsImplCopyWith(_$FetchAllProductsImpl value,
+          $Res Function(_$FetchAllProductsImpl) then) =
+      __$$FetchAllProductsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ProductEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$FetchAllProductsImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$FetchAllProductsImpl>
+    implements _$$FetchAllProductsImplCopyWith<$Res> {
+  __$$FetchAllProductsImplCopyWithImpl(_$FetchAllProductsImpl _value,
+      $Res Function(_$FetchAllProductsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$FetchAllProductsImpl implements _FetchAllProducts {
+  const _$FetchAllProductsImpl();
 
   @override
   String toString() {
-    return 'ProductEvent.started()';
+    return 'ProductEvent.fetchAllProducts()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$FetchAllProductsImpl);
   }
 
   @override
@@ -106,27 +112,30 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() fetchAllProducts,
+    required TResult Function(int productId) fetchProductById,
   }) {
-    return started();
+    return fetchAllProducts();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? fetchAllProducts,
+    TResult? Function(int productId)? fetchProductById,
   }) {
-    return started?.call();
+    return fetchAllProducts?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetchAllProducts,
+    TResult Function(int productId)? fetchProductById,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (fetchAllProducts != null) {
+      return fetchAllProducts();
     }
     return orElse();
   }
@@ -134,34 +143,172 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_FetchAllProducts value) fetchAllProducts,
+    required TResult Function(_FetchProductById value) fetchProductById,
   }) {
-    return started(this);
+    return fetchAllProducts(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult? Function(_FetchProductById value)? fetchProductById,
   }) {
-    return started?.call(this);
+    return fetchAllProducts?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult Function(_FetchProductById value)? fetchProductById,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (fetchAllProducts != null) {
+      return fetchAllProducts(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ProductEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _FetchAllProducts implements ProductEvent {
+  const factory _FetchAllProducts() = _$FetchAllProductsImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchProductByIdImplCopyWith<$Res> {
+  factory _$$FetchProductByIdImplCopyWith(_$FetchProductByIdImpl value,
+          $Res Function(_$FetchProductByIdImpl) then) =
+      __$$FetchProductByIdImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int productId});
+}
+
+/// @nodoc
+class __$$FetchProductByIdImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$FetchProductByIdImpl>
+    implements _$$FetchProductByIdImplCopyWith<$Res> {
+  __$$FetchProductByIdImplCopyWithImpl(_$FetchProductByIdImpl _value,
+      $Res Function(_$FetchProductByIdImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+  }) {
+    return _then(_$FetchProductByIdImpl(
+      null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchProductByIdImpl implements _FetchProductById {
+  const _$FetchProductByIdImpl(this.productId);
+
+  @override
+  final int productId;
+
+  @override
+  String toString() {
+    return 'ProductEvent.fetchProductById(productId: $productId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchProductByIdImpl &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchProductByIdImplCopyWith<_$FetchProductByIdImpl> get copyWith =>
+      __$$FetchProductByIdImplCopyWithImpl<_$FetchProductByIdImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchAllProducts,
+    required TResult Function(int productId) fetchProductById,
+  }) {
+    return fetchProductById(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchAllProducts,
+    TResult? Function(int productId)? fetchProductById,
+  }) {
+    return fetchProductById?.call(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchAllProducts,
+    TResult Function(int productId)? fetchProductById,
+    required TResult orElse(),
+  }) {
+    if (fetchProductById != null) {
+      return fetchProductById(productId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchAllProducts value) fetchAllProducts,
+    required TResult Function(_FetchProductById value) fetchProductById,
+  }) {
+    return fetchProductById(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult? Function(_FetchProductById value)? fetchProductById,
+  }) {
+    return fetchProductById?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult Function(_FetchProductById value)? fetchProductById,
+    required TResult orElse(),
+  }) {
+    if (fetchProductById != null) {
+      return fetchProductById(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchProductById implements ProductEvent {
+  const factory _FetchProductById(final int productId) = _$FetchProductByIdImpl;
+
+  int get productId;
+  @JsonKey(ignore: true)
+  _$$FetchProductByIdImplCopyWith<_$FetchProductByIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -170,7 +317,8 @@ mixin _$ProductState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> data) success,
+    required TResult Function(List<Product>? data) successAllProducts,
+    required TResult Function(Product product) successProduct,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -178,7 +326,8 @@ mixin _$ProductState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> data)? success,
+    TResult? Function(List<Product>? data)? successAllProducts,
+    TResult? Function(Product product)? successProduct,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -186,7 +335,8 @@ mixin _$ProductState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> data)? success,
+    TResult Function(List<Product>? data)? successAllProducts,
+    TResult Function(Product product)? successProduct,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -195,7 +345,8 @@ mixin _$ProductState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
+    required TResult Function(_SuccessAllProducts value) successAllProducts,
+    required TResult Function(_SuccessProduct value) successProduct,
     required TResult Function(_Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -203,7 +354,8 @@ mixin _$ProductState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessAllProducts value)? successAllProducts,
+    TResult? Function(_SuccessProduct value)? successProduct,
     TResult? Function(_Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -211,7 +363,8 @@ mixin _$ProductState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
+    TResult Function(_SuccessAllProducts value)? successAllProducts,
+    TResult Function(_SuccessProduct value)? successProduct,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) =>
@@ -276,7 +429,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> data) success,
+    required TResult Function(List<Product>? data) successAllProducts,
+    required TResult Function(Product product) successProduct,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -287,7 +441,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> data)? success,
+    TResult? Function(List<Product>? data)? successAllProducts,
+    TResult? Function(Product product)? successProduct,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -298,7 +453,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> data)? success,
+    TResult Function(List<Product>? data)? successAllProducts,
+    TResult Function(Product product)? successProduct,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -313,7 +469,8 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
+    required TResult Function(_SuccessAllProducts value) successAllProducts,
+    required TResult Function(_SuccessProduct value) successProduct,
     required TResult Function(_Failure value) failure,
   }) {
     return initial(this);
@@ -324,7 +481,8 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessAllProducts value)? successAllProducts,
+    TResult? Function(_SuccessProduct value)? successProduct,
     TResult? Function(_Failure value)? failure,
   }) {
     return initial?.call(this);
@@ -335,7 +493,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
+    TResult Function(_SuccessAllProducts value)? successAllProducts,
+    TResult Function(_SuccessProduct value)? successProduct,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -390,7 +549,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> data) success,
+    required TResult Function(List<Product>? data) successAllProducts,
+    required TResult Function(Product product) successProduct,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -401,7 +561,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> data)? success,
+    TResult? Function(List<Product>? data)? successAllProducts,
+    TResult? Function(Product product)? successProduct,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -412,7 +573,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> data)? success,
+    TResult Function(List<Product>? data)? successAllProducts,
+    TResult Function(Product product)? successProduct,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -427,7 +589,8 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
+    required TResult Function(_SuccessAllProducts value) successAllProducts,
+    required TResult Function(_SuccessProduct value) successProduct,
     required TResult Function(_Failure value) failure,
   }) {
     return loading(this);
@@ -438,7 +601,8 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessAllProducts value)? successAllProducts,
+    TResult? Function(_SuccessProduct value)? successProduct,
     TResult? Function(_Failure value)? failure,
   }) {
     return loading?.call(this);
@@ -449,7 +613,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
+    TResult Function(_SuccessAllProducts value)? successAllProducts,
+    TResult Function(_SuccessProduct value)? successProduct,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -465,59 +630,61 @@ abstract class _Loading implements ProductState {
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$SuccessAllProductsImplCopyWith<$Res> {
+  factory _$$SuccessAllProductsImplCopyWith(_$SuccessAllProductsImpl value,
+          $Res Function(_$SuccessAllProductsImpl) then) =
+      __$$SuccessAllProductsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Product> data});
+  $Res call({List<Product>? data});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$ProductStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$SuccessAllProductsImplCopyWithImpl<$Res>
+    extends _$ProductStateCopyWithImpl<$Res, _$SuccessAllProductsImpl>
+    implements _$$SuccessAllProductsImplCopyWith<$Res> {
+  __$$SuccessAllProductsImplCopyWithImpl(_$SuccessAllProductsImpl _value,
+      $Res Function(_$SuccessAllProductsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
   }) {
-    return _then(_$SuccessImpl(
-      null == data
+    return _then(_$SuccessAllProductsImpl(
+      freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+              as List<Product>?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<Product> data) : _data = data;
+class _$SuccessAllProductsImpl implements _SuccessAllProducts {
+  const _$SuccessAllProductsImpl(final List<Product>? data) : _data = data;
 
-  final List<Product> _data;
+  final List<Product>? _data;
   @override
-  List<Product> get data {
+  List<Product>? get data {
+    final value = _data;
+    if (value == null) return null;
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'ProductState.success(data: $data)';
+    return 'ProductState.successAllProducts(data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$SuccessAllProductsImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -528,18 +695,20 @@ class _$SuccessImpl implements _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$SuccessAllProductsImplCopyWith<_$SuccessAllProductsImpl> get copyWith =>
+      __$$SuccessAllProductsImplCopyWithImpl<_$SuccessAllProductsImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> data) success,
+    required TResult Function(List<Product>? data) successAllProducts,
+    required TResult Function(Product product) successProduct,
     required TResult Function(String message) failure,
   }) {
-    return success(data);
+    return successAllProducts(data);
   }
 
   @override
@@ -547,10 +716,11 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> data)? success,
+    TResult? Function(List<Product>? data)? successAllProducts,
+    TResult? Function(Product product)? successProduct,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(data);
+    return successAllProducts?.call(data);
   }
 
   @override
@@ -558,12 +728,13 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> data)? success,
+    TResult Function(List<Product>? data)? successAllProducts,
+    TResult Function(Product product)? successProduct,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(data);
+    if (successAllProducts != null) {
+      return successAllProducts(data);
     }
     return orElse();
   }
@@ -573,10 +744,11 @@ class _$SuccessImpl implements _Success {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
+    required TResult Function(_SuccessAllProducts value) successAllProducts,
+    required TResult Function(_SuccessProduct value) successProduct,
     required TResult Function(_Failure value) failure,
   }) {
-    return success(this);
+    return successAllProducts(this);
   }
 
   @override
@@ -584,10 +756,11 @@ class _$SuccessImpl implements _Success {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessAllProducts value)? successAllProducts,
+    TResult? Function(_SuccessProduct value)? successProduct,
     TResult? Function(_Failure value)? failure,
   }) {
-    return success?.call(this);
+    return successAllProducts?.call(this);
   }
 
   @override
@@ -595,23 +768,177 @@ class _$SuccessImpl implements _Success {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
+    TResult Function(_SuccessAllProducts value)? successAllProducts,
+    TResult Function(_SuccessProduct value)? successProduct,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if (successAllProducts != null) {
+      return successAllProducts(this);
     }
     return orElse();
   }
 }
 
-abstract class _Success implements ProductState {
-  const factory _Success(final List<Product> data) = _$SuccessImpl;
+abstract class _SuccessAllProducts implements ProductState {
+  const factory _SuccessAllProducts(final List<Product>? data) =
+      _$SuccessAllProductsImpl;
 
-  List<Product> get data;
+  List<Product>? get data;
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$SuccessAllProductsImplCopyWith<_$SuccessAllProductsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessProductImplCopyWith<$Res> {
+  factory _$$SuccessProductImplCopyWith(_$SuccessProductImpl value,
+          $Res Function(_$SuccessProductImpl) then) =
+      __$$SuccessProductImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Product product});
+}
+
+/// @nodoc
+class __$$SuccessProductImplCopyWithImpl<$Res>
+    extends _$ProductStateCopyWithImpl<$Res, _$SuccessProductImpl>
+    implements _$$SuccessProductImplCopyWith<$Res> {
+  __$$SuccessProductImplCopyWithImpl(
+      _$SuccessProductImpl _value, $Res Function(_$SuccessProductImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_$SuccessProductImpl(
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuccessProductImpl implements _SuccessProduct {
+  const _$SuccessProductImpl(this.product);
+
+  @override
+  final Product product;
+
+  @override
+  String toString() {
+    return 'ProductState.successProduct(product: $product)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessProductImpl &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessProductImplCopyWith<_$SuccessProductImpl> get copyWith =>
+      __$$SuccessProductImplCopyWithImpl<_$SuccessProductImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Product>? data) successAllProducts,
+    required TResult Function(Product product) successProduct,
+    required TResult Function(String message) failure,
+  }) {
+    return successProduct(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Product>? data)? successAllProducts,
+    TResult? Function(Product product)? successProduct,
+    TResult? Function(String message)? failure,
+  }) {
+    return successProduct?.call(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Product>? data)? successAllProducts,
+    TResult Function(Product product)? successProduct,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) {
+    if (successProduct != null) {
+      return successProduct(product);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessAllProducts value) successAllProducts,
+    required TResult Function(_SuccessProduct value) successProduct,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return successProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_SuccessAllProducts value)? successAllProducts,
+    TResult? Function(_SuccessProduct value)? successProduct,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return successProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessAllProducts value)? successAllProducts,
+    TResult Function(_SuccessProduct value)? successProduct,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (successProduct != null) {
+      return successProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessProduct implements ProductState {
+  const factory _SuccessProduct(final Product product) = _$SuccessProductImpl;
+
+  Product get product;
+  @JsonKey(ignore: true)
+  _$$SuccessProductImplCopyWith<_$SuccessProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -681,7 +1008,8 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> data) success,
+    required TResult Function(List<Product>? data) successAllProducts,
+    required TResult Function(Product product) successProduct,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -692,7 +1020,8 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> data)? success,
+    TResult? Function(List<Product>? data)? successAllProducts,
+    TResult? Function(Product product)? successProduct,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -703,7 +1032,8 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> data)? success,
+    TResult Function(List<Product>? data)? successAllProducts,
+    TResult Function(Product product)? successProduct,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -718,7 +1048,8 @@ class _$FailureImpl implements _Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
+    required TResult Function(_SuccessAllProducts value) successAllProducts,
+    required TResult Function(_SuccessProduct value) successProduct,
     required TResult Function(_Failure value) failure,
   }) {
     return failure(this);
@@ -729,7 +1060,8 @@ class _$FailureImpl implements _Failure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessAllProducts value)? successAllProducts,
+    TResult? Function(_SuccessProduct value)? successProduct,
     TResult? Function(_Failure value)? failure,
   }) {
     return failure?.call(this);
@@ -740,7 +1072,8 @@ class _$FailureImpl implements _Failure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
+    TResult Function(_SuccessAllProducts value)? successAllProducts,
+    TResult Function(_SuccessProduct value)? successProduct,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {

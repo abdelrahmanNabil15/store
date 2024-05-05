@@ -19,10 +19,16 @@ class ApiService {
     required ResponseConverter<T> converter,
   }) async {
     try {
-      final response = await _dio.get('${Constants.baseUrl}$endPoint',
+      final    response = await _dio.get('${Constants.baseUrl}$endPoint',
           data: data, queryParameters: params);
+
+
+
       if (response.statusCode ==  ResponseCode.SUCCESS || response.statusCode ==  ResponseCode.NO_CONTENT) {
-        return Right(converter(response.data));
+
+
+        return Right( converter(response.data));
+
       }
       throw DioException(
         requestOptions: response.requestOptions,
@@ -32,7 +38,7 @@ class ApiService {
       return Left(
         Failure(
           code: e.response!.statusCode,
-          message: e.response!.data['message'],
+          message: e.response!.data,
         ),
       );
     }
@@ -48,7 +54,7 @@ class ApiService {
       final response = await _dio.post('${Constants.baseUrl}$endPoint',
           data: data, queryParameters: params);
       if (response.statusCode ==  ResponseCode.SUCCESS || response.statusCode ==  ResponseCode.NO_CONTENT) {
-        return Right(converter(response.data));
+        return Right(converter(response.data ));
       }
       throw DioException(
         requestOptions: response.requestOptions,
@@ -58,7 +64,7 @@ class ApiService {
       return Left(
         Failure(
           code: e.response!.statusCode,
-          message: e.response!.data['message'],
+          message: e.response!.data,
         ),
       );
     }

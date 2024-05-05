@@ -20,5 +20,6 @@
   "pleaseWait": "برجاء الانتظار ",
   "welcomeBack" :"مرحباً بعودتك",
   "pleaseEnterUserName": "برجاء ادخل أسم المستخدم ",
-  "pleaseEnterPassword": "برجاء ادخل كلمة السر "
+  "pleaseEnterPassword": "برجاء ادخل كلمة السر ",
+  "search": "بحث عن ..."
 }

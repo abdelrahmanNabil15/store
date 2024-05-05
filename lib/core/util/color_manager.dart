@@ -16,6 +16,7 @@ class ColorManager {
   static Color colorPlaceHolderLight = const Color(0xFFE5E5E5);
   static Color colorPlaceHolderDark = const Color(0xFFC4C5C4);
 
+
   static Color colorFontPrimaryLight = const Color(0xFF0C1A30);
   static Color colorFontPrimaryDark = const Color(0xFF0C1A30);
 

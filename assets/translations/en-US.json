@@ -20,6 +20,7 @@
   "pleaseWait": "Please wait ",
   "welcomeBack" :"Welcome Back",
   "pleaseEnterUserName": "Please enter username",
-  "pleaseEnterPassword": "Please enter Password"
+  "pleaseEnterPassword": "Please enter Password",
+  "search": "search for.."
 
 }

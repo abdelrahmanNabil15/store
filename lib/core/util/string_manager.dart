@@ -24,5 +24,6 @@ class AppStrings {
   static const String welcomeBack = "welcomeBack";
   static const String pleaseEnterUserName = "pleaseEnterUserName";
   static const String pleaseEnterPassword = "pleaseEnterPassword";
+  static const String search = "search";
 
 }
