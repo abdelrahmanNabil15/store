@@ -8,9 +8,12 @@ import 'package:store/core/usecase/base_usecase.dart';
 import 'package:store/features/products/data/model/get_all_products_response.dart';
 import 'package:store/features/products/domain/entities/product.dart';
 
+import '../../domain/usecase/get_single_product.dart';
+
 abstract class ProductsRemoteDataSource {
-  Future<Either<Failure,     List< ProductModel>>> getAllProducts(
-      NoParams noParams);
+  Future<Either<Failure, List<ProductModel>>> getAllProducts(NoParams noParams,);
+  Future<Either<Failure, ProductModel>> getSingleProducts(SingleProductParams singleProductParams,);
+  
 }
 
 class ProductsRemoteDataSourceImp extends ProductsRemoteDataSource {
@@ -18,17 +21,23 @@ class ProductsRemoteDataSourceImp extends ProductsRemoteDataSource {
 
   ProductsRemoteDataSourceImp(this._apiService);
 
-
-
   @override
-  Future<Either<Failure,    List< ProductModel>  >> getAllProducts(
+  Future<Either<Failure, List<ProductModel>>> getAllProducts(
       NoParams noParams) async {
     final response = await _apiService.get(
-        endPoint: Constants.getAllProductsUrl,
-        converter: (response) =>  List<ProductModel> .from((response as List).map(
-          (e) => ProductModel.fromJson(e),
-    )),);
+      endPoint: Constants.getAllProductsUrl,
+      converter: (response) => List<ProductModel>.from((response as List).map(
+        (e) => ProductModel.fromJson(e),
+      )),
+    );
 
     return response;
+  }
+
+  @override
+  Future<Either<Failure, ProductModel>> getSingleProducts(SingleProductParams singleProductParams)async {
+   final  response= await _apiService.get(endPoint: '${Constants.getSingleProductsUrl}${singleProductParams.productId}' ,
+       converter: (response)=>ProductModel.fromJson(response));
+   return response;
   }
 }

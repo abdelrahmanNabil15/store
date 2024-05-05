@@ -11,7 +11,9 @@ import 'package:store/features/products/data/data_sources/products_remote_data_s
 import 'package:store/features/products/data/repositories/product_repository_imp.dart';
 import 'package:store/features/products/domain/repositories/products_repository.dart';
 import 'package:store/features/products/domain/usecase/get_all_products.dart';
+import 'package:store/features/products/domain/usecase/get_single_product.dart';
 import 'package:store/features/products/presentation/bloc/product_bloc.dart';
+import 'package:store/features/products/presentation/bloc/product_details_bloc/product_details_bloc.dart';
 
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
@@ -61,6 +63,7 @@ void useCase() {
   /// Auth
   instance.registerFactory<LoginUseCase>(() => LoginUseCase(instance()));
   instance.registerFactory<GetProductsUseCase>(() => GetProductsUseCase(instance()));
+  instance.registerFactory<GetSingleProductUseCase>(() => GetSingleProductUseCase(instance()));
 
 }
 
@@ -69,6 +72,7 @@ void bloc() {
   ///
   instance.registerFactory(() => AuthBloc(instance()));
   instance.registerFactory(() => ProductBloc(instance()));
+  instance.registerFactory(() => ProductDetailsBloc(instance()));
 
 
 }

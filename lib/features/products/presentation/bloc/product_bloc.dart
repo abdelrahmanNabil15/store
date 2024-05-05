@@ -15,7 +15,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final GetProductsUseCase _getProductsUseCase;
 
   ProductBloc(this._getProductsUseCase) : super(const ProductState.initial()) {
-    /// fetch aal products event
+    /// fetch all products event
     on<_FetchAllProducts>((_FetchAllProducts event, emit) async {
        emit( const ProductState.loading());
       final data = await _getProductsUseCase.execute(NoParams());
@@ -25,6 +25,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(ProductState.successAllProducts(success));
       });
     });
+    /// fetch single product event
+    // on<_FetchProductById>((_FetchProductById event ,emit)async{
+    //    emit( const ProductState.loading());
+    //   final data = await _getProductsUseCase
+    //
+    // });
 
 
   }
