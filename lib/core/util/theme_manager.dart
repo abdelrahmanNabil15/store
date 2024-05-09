@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:store/core/util/ColorManager/color_app_dark.dart';
 
+import 'ColorManager/color_app_light.dart';
 import 'color_manager.dart';
 import 'font_manager.dart';
 import 'style_manager.dart';
@@ -13,222 +14,330 @@ abstract class MainThemeApp {
 class LightModeTheme implements MainThemeApp {
   @override
   ThemeData themeData = ThemeData(
-    primaryColor: ColorManager.colorPrimaryLight,
-    cardColor: ColorManager.colorCardLight,
-    scaffoldBackgroundColor: ColorManager.colorBackgroundLight,
-    disabledColor: ColorManager.colorGrey1,
-    splashColor: ColorManager.colorSplash,
-
-    // Text color
-    primaryColorLight: ColorManager.colorFontPrimaryLight,
-    primaryColorDark: ColorManager.colorFontSecondaryLight,
-
-    hintColor: ColorManager.colorPlaceHolderLight,
-
-    shadowColor: ColorManager.colorBackgroundDark,
-
-    fontFamily: FontConstants.fontDMSans,
-
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: ColorManager.colorBackgroundLight,
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: ColorManager.colorPrimaryLight,
-      unselectedItemColor: ColorManager.colorBlack,
-    ),
-
+    primaryColor: ColorManagerLight.colorPrimary,
+    cardColor: ColorManagerLight.colorCard,
+    scaffoldBackgroundColor: ColorManagerLight.colorBackground,
+    disabledColor: ColorManagerLight.colorGrey1,
     appBarTheme: AppBarTheme(
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(color: ColorManager.colorFontPrimaryLight, size: AppSize.s20),
-        titleTextStyle: getMediumStyle(
-            fontSize: FontSize.s18, color: ColorManager.colorFontPrimaryLight)),
+        backgroundColor: ColorManagerLight.colorBackground,
+        iconTheme: IconThemeData(color: ColorManagerLight.colorBlack,),
+        elevation: 0.0,
+        titleTextStyle: getBoldStyle(
+            fontSize: FontSize.s22, color: ColorManagerLight.fontPrimary)),
+    cardTheme: CardTheme(
+        color: ColorManagerLight.colorWhite,
+        shadowColor: ColorManagerLight.colorPlaceHolder,
+        elevation: AppSize.s4),
+      buttonTheme: ButtonThemeData(
+          shape: const StadiumBorder(),
+          disabledColor: ColorManagerLight.colorGrey1,
+          buttonColor: ColorManagerLight.colorPrimary,
+          splashColor: ColorManagerLight.colorPrimary),
 
+      // elevated button them
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              textStyle: getRegularStyle(
+                  color: ColorManagerLight.fontPrimary, fontSize: FontSize.s17),
+              backgroundColor: ColorManagerLight.colorPrimary,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppSize.s12)))),
+
+      // text button them
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: ColorManagerLight.colorPrimary,
+
+            textStyle: getMediumStyle(color: ColorManagerDark.fontPrimary,
+                fontSize: FontSize.s16),
+            // splashFactory: NoSplash.splashFactory
+          )
+      ),
+
+
+      // text theme
+      textTheme: TextTheme(
+        displayLarge: getSemiBoldStyle(
+            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+        headlineLarge: getSemiBoldStyle(
+            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+        headlineMedium: getRegularStyle(
+            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s14),
+        titleMedium: getMediumStyle(
+            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+        titleLarge: getBoldStyle(
+            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s22),
+        titleSmall: getRegularStyle(
+            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+        bodyLarge: getRegularStyle(color: ColorManagerLight.fontPrimary),
+        bodySmall: getRegularStyle(color: ColorManagerLight.fontPrimary),
+        bodyMedium: getRegularStyle(
+            color: ColorManagerLight.colorGrey1, fontSize: FontSize.s12),
+        labelSmall: getBoldStyle(
+            color: ColorManagerLight.colorPrimary, fontSize: FontSize.s12),),
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: ColorManager.colorTextFieldLight,
-        contentPadding: const EdgeInsets.symmetric(
-            horizontal: AppPadding.p16, vertical: AppPadding.p20),
+      // content padding
+        contentPadding: const EdgeInsets.all(AppPadding.p8),
         // hint style
-        hintStyle: getRegularStyle(color: ColorManager.colorPlaceHolderLight),
-        labelStyle: getMediumStyle(color: ColorManager.colorFontPrimaryLight),
-        errorStyle: getRegularStyle(color: ColorManager.colorError),
+        hintStyle: getRegularStyle(
+            color: ColorManagerLight.colorPlaceHolder, fontSize: FontSize.s14),
+        labelStyle:
+        getMediumStyle(
+            color: ColorManagerLight.colorGrey1, fontSize: FontSize.s14),
+        errorStyle: getRegularStyle(color: ColorManagerLight.colorError),
 
         // enabled border style
-        enabledBorder: const OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(color: Colors.transparent, width: AppSize.s1_5),
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s10))),
+            BorderSide(
+                color: ColorManagerLight.colorGrey1, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
 
         // focused border style
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: ColorManager.colorPrimaryLight, width: AppSize.s1_5),
-            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s10))),
+            borderSide:
+            BorderSide(
+                color: ColorManagerLight.colorPrimary, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
 
         // error border style
         errorBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(color: ColorManager.colorError, width: AppSize.s1_5),
-            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s10))),
+            BorderSide(
+                color: ColorManagerLight.colorError, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
         // focused border style
         focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: ColorManager.colorPrimaryLight, width: AppSize.s1_5),
-            borderRadius:
-                const BorderRadius.all(Radius.circular(AppSize.s10)))),
+            borderSide:
+            BorderSide(
+                color: ColorManagerLight.colorPrimary, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
   );
 }
 
 class DarkModeTheme implements MainThemeApp {
   @override
   ThemeData themeData = ThemeData(
-    primaryColor: ColorManager.colorPrimaryDark,
-    cardColor: ColorManager.colorCardDark,
-    scaffoldBackgroundColor: ColorManager.colorBackgroundDark,
-    disabledColor: ColorManager.colorGrey1,
+      primaryColor: ColorManagerDark.colorPrimary,
+      cardColor: ColorManagerDark.colorCard,
+      scaffoldBackgroundColor: ColorManagerDark.colorBackground,
+      disabledColor: ColorManagerDark.colorGrey1,
 
-    // input decoration theme (text form field)
-    // inputDecorationTheme: InputDecorationTheme(
-    //   // content padding
-    //     contentPadding: const EdgeInsets.all(AppPadding.p8),
-    //     // hint style
-    //     hintStyle: getRegularStyle(
-    //         color: ColorManager.colorPlaceHolderLight, fontSize: FontSize.s14),
-    //     labelStyle:
-    //     getMediumStyle(color: ColorManager.grey, fontSize: FontSize.s14),
-    //     errorStyle: getRegularStyle(color: ColorManager.error),
-    //
-    //     // enabled border style
-    //     enabledBorder: OutlineInputBorder(
-    //         borderSide:
-    //         BorderSide(color: ColorManager.colorGrey2, width: AppSize.s1_5),
-    //         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-    //
-    //     // focused border style
-    //     focusedBorder: OutlineInputBorder(
-    //         borderSide:
-    //         BorderSide(
-    //             color: ColorManager.colorPrimaryLight, width: AppSize.s1_5),
-    //         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-    //
-    //     // error border style
-    //     errorBorder: OutlineInputBorder(
-    //         borderSide:
-    //         BorderSide(color: ColorManager.colorError, width: AppSize.s1_5),
-    //         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-    //     // focused border style
-    //     focusedErrorBorder: OutlineInputBorder(
-    //         borderSide:
-    //         BorderSide(
-    //             color: ColorManager.colorPrimaryLight, width: AppSize.s1_5),
-    //         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
-  );
-}
 
-// ThemeData getApplicationTheme() {
-//   return ThemeData(
-//     // main colors
-//     primaryColor: ColorManager.primary,
-//     primaryColorLight: ColorManager.lightPrimary,
-//     primaryColorDark: ColorManager.darkPrimary,
-//     disabledColor: ColorManager.grey1,
-//     splashColor: ColorManager.lightPrimary,
-//     // fontFamily: FontConstants.fontFamily,
-//
-//     // cardView theme
-//     cardTheme: CardTheme(
-//         color: ColorManager.white,
-//         shadowColor: ColorManager.grey,
-//         elevation: AppSize.s4),
-//
-//     // appBar theme
-//     appBarTheme: AppBarTheme(
-//         centerTitle: true,
-//         color: ColorManager.primary,
-//         elevation: AppSize.s4,
-//         shadowColor: ColorManager.lightPrimary,
-//         titleTextStyle: getRegularStyle(fontSize: FontSize.s16, color: ColorManager.white)),
-//
-//     // button theme
-//     buttonTheme: ButtonThemeData(
-//         shape: const StadiumBorder(),
-//         disabledColor: ColorManager.grey1,
-//         buttonColor: ColorManager.primary,
-//         splashColor: ColorManager.lightPrimary),
-//
-//     // elevated button them
-//     elevatedButtonTheme: ElevatedButtonThemeData(
-//         style: ElevatedButton.styleFrom(
-//             textStyle: getRegularStyle(color: ColorManager.white, fontSize: FontSize.s17),
-//             primary: ColorManager.primary,
-//             shape: RoundedRectangleBorder(
-//                 borderRadius: BorderRadius.circular(AppSize.s12)))),
-//
-//     // text button them
-//     textButtonTheme: TextButtonThemeData(
-//         style: TextButton.styleFrom(
-//             textStyle: getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s16),
-//             primary: ColorManager.primary,
-//             // splashFactory: NoSplash.splashFactory
-//         )
-//     ),
-//
-//     // text theme
-//     textTheme: TextTheme(
-//         displayLarge: getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
-//         headlineLarge: getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
-//         headlineMedium: getRegularStyle(color: ColorManager.darkGrey, fontSize: FontSize.s14),
-//         titleMedium: getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s16),
-//         titleSmall: getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
-//         bodyLarge: getRegularStyle(color: ColorManager.grey1),
-//         bodySmall: getRegularStyle(color: ColorManager.grey),
-//         bodyMedium: getRegularStyle(color: ColorManager.grey2, fontSize: FontSize.s12),
-//         labelSmall: getBoldStyle(color: ColorManager.primary, fontSize: FontSize.s12)),
-//
-//     // input decoration theme (text form field)
-//     inputDecorationTheme: InputDecorationTheme(
-//         // content padding
-//         contentPadding: const EdgeInsets.all(AppPadding.p8),
-//         // hint style
-//         hintStyle: getRegularStyle(color: ColorManager.grey, fontSize: FontSize.s14),
-//         labelStyle:
-//             getMediumStyle(color: ColorManager.grey, fontSize: FontSize.s14),
-//         errorStyle: getRegularStyle(color: ColorManager.error),
-//
-//         // enabled border style
-//         enabledBorder: OutlineInputBorder(
-//             borderSide:
-//                 BorderSide(color: ColorManager.grey, width: AppSize.s1_5),
-//             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-//
-//         // focused border style
-//         focusedBorder: OutlineInputBorder(
-//             borderSide:
-//                 BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
-//             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-//
-//         // error border style
-//         errorBorder: OutlineInputBorder(
-//             borderSide:
-//                 BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-//             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-//         // focused border style
-//         focusedErrorBorder: OutlineInputBorder(
-//             borderSide:
-//                 BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
-//             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
-//     // label style
-//   );
-// }
-//
+      // cardView theme
+      cardTheme: CardTheme(
+          color: ColorManagerDark.colorWhite,
+          shadowColor: ColorManagerDark.colorPlaceHolder,
+          elevation: AppSize.s4),
 
-// enum AppTheme {
-//   Light,
-//   Dark
-//   // GreenLight,
-//   // GreenDark,
-//   // BlueLight,
-//   // BlueDark,
-// }
+      // appBar theme
+      appBarTheme: AppBarTheme(
+          centerTitle: true,
+          backgroundColor: ColorManagerDark.colorBackground,
+          iconTheme: IconThemeData(color: ColorManagerDark.colorWhite,),
+          elevation: 0.0,
+          titleTextStyle: getBoldStyle(
+              fontSize: FontSize.s22, color: ColorManagerDark.fontPrimary)),
+
+      // button theme
+      buttonTheme: ButtonThemeData(
+          shape: const StadiumBorder(),
+          disabledColor: ColorManagerDark.colorGrey1,
+          buttonColor: ColorManagerDark.colorPrimary,
+          splashColor: ColorManagerDark.colorPrimary),
+
+      // elevated button them
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              textStyle: getRegularStyle(
+                  color: ColorManagerDark.fontPrimary, fontSize: FontSize.s17),
+              backgroundColor: ColorManagerDark.colorPrimary,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppSize.s12)))),
+
+      // text button them
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: ColorManagerDark.colorPrimary,
+
+            textStyle: getMediumStyle(color: ColorManagerDark.fontPrimary,
+                fontSize: FontSize.s16),
+            // splashFactory: NoSplash.splashFactory
+          )
+      ),
+
+
+      // text theme
+      textTheme: TextTheme(
+          displayLarge: getSemiBoldStyle(
+              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+          headlineLarge: getSemiBoldStyle(
+              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+          headlineMedium: getRegularStyle(
+              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s14),
+          titleMedium: getMediumStyle(
+              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+          titleLarge: getBoldStyle(
+              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s22),
+          titleSmall: getRegularStyle(
+              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+          bodyLarge: getRegularStyle(color: ColorManagerDark.fontPrimary),
+          bodySmall: getRegularStyle(color: ColorManagerDark.fontPrimary),
+          bodyMedium: getRegularStyle(
+              color: ColorManagerDark.colorGrey1, fontSize: FontSize.s12),
+          labelSmall: getBoldStyle(
+              color: ColorManagerDark.colorPrimary, fontSize: FontSize.s12),));
+
+
+      }
+
+      ThemeData getApplicationTheme() {
+  return LightModeTheme().themeData;
+
+  //   ThemeData(
+  //   // main colors
+  //   primaryColor: ColorManagerLight.colorPrimary,
+  //   primaryColorLight: ColorManagerLight.colorPrimary,
+  //   primaryColorDark: ColorManagerLight.colorPrimary,
+  //   disabledColor: ColorMa    inputDecorationTheme: InputDecorationTheme(
+  //       // content padding
+  //         contentPadding: const EdgeInsets.all(AppPadding.p8),
+  //         // hint style
+  //         hintStyle: getRegularStyle(
+  //             color: ColorManagerDark.colorPlaceHolder, fontSize: FontSize.s14),
+  //         labelStyle:
+  //         getMediumStyle(color: ColorManagerDark.colorGrey1, fontSize: FontSize.s14),
+  //         errorStyle: getRegularStyle(color: ColorManagerDark.colorError),
+  //
+  //         // enabled border style
+  //         enabledBorder: OutlineInputBorder(
+  //             borderSide:
+  //             BorderSide(color: ColorManagerDark.colorGrey1, width: AppSize.s1_5),
+  //             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
+  //
+  //         // focused border style
+  //         focusedBorder: OutlineInputBorder(
+  //             borderSide:
+  //             BorderSide(
+  //                 color: ColorManagerDark.colorPrimary, width: AppSize.s1_5),
+  //             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
+  //
+  //         // error border style
+  //         errorBorder: OutlineInputBorder(
+  //             borderSide:
+  //             BorderSide(color: ColorManagerDark.colorError, width: AppSize.s1_5),
+  //             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
+  //         // focused border style
+  //         focusedErrorBorder: OutlineInputBorder(
+  //             borderSide:
+  //             BorderSide(
+  //                 color: ColorManagerDark.colorPrimary, width: AppSize.s1_5),
+  //             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
+  //   );nagerLight.colorGrey1,
+  //   splashColor: ColorManagerLight.colorBackground,
+  //   // fontFamily: FontConstants.fontFamily,
+  //
+  //   // cardView theme
+  //   cardTheme: CardTheme(
+  //       color: ColorManagerLight.colorWhite,
+  //       shadowColor: ColorManagerLight.colorPlaceHolder,
+  //       elevation: AppSize.s4),
+  //
+  //   // appBar theme
+  //   appBarTheme: AppBarTheme(
+  //       centerTitle: true,
+  //       backgroundColor:ColorManagerLight.colorWhite,
+  //       iconTheme: IconThemeData(color: ColorManagerLight.colorBlack,  ),
+  //       elevation: 0.0,
+  //
+  //       titleTextStyle: getRegularStyle(fontSize: FontSize.s16, color: ColorManagerLight.fontPrimary)),
+  //
+  //   // button theme
+  //   buttonTheme: ButtonThemeData(
+  //       shape: const StadiumBorder(),
+  //       disabledColor: ColorManagerLight.colorGrey1,
+  //       buttonColor: ColorManagerLight.colorPrimary,
+  //       splashColor: ColorManagerLight.colorPrimary),
+  //
+  //   // elevated button them
+  //   elevatedButtonTheme: ElevatedButtonThemeData(
+  //       style: ElevatedButton.styleFrom(
+  //           textStyle: getRegularStyle(color:  ColorManagerLight.fontPrimary, fontSize: FontSize.s17), backgroundColor: ColorManagerLight.colorPrimary,
+  //           shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(AppSize.s12)))),
+  //
+  //   // text button them
+  //   textButtonTheme: TextButtonThemeData(
+  //       style: TextButton.styleFrom(
+  //           foregroundColor: ColorManagerLight.colorPrimary, textStyle: getMediumStyle(color:  ColorManagerLight.colorPlaceHolder, fontSize: FontSize.s16),
+  //           // splashFactory: NoSplash.splashFactory
+  //       )
+  //   ),
+  //
+  //   // text theme
+  //   textTheme: TextTheme(
+  //       displayLarge: getSemiBoldStyle(color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+  //       headlineLarge: getSemiBoldStyle(color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+  //       headlineMedium: getRegularStyle(color: ColorManagerLight.fontPrimary, fontSize: FontSize.s14),
+  //       titleMedium: getMediumStyle(color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+  //       titleSmall: getRegularStyle(color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+  //       bodyLarge: getRegularStyle(color: ColorManagerLight.fontPrimary),
+  //       bodySmall: getRegularStyle(color: ColorManagerLight.fontPrimary),
+  //       bodyMedium: getRegularStyle(color: ColorManagerLight.colorGrey1, fontSize: FontSize.s12),
+  //       labelSmall: getBoldStyle(color: ColorManagerLight.colorPrimary, fontSize: FontSize.s12)),
+  //
+  //   // input decoration theme (text form field)
+  //   inputDecorationTheme: InputDecorationTheme(
+  //       // content padding
+  //
+  //       // hint style
+  //       hintStyle: getRegularStyle(color: ColorManagerLight.colorGrey1, fontSize: FontSize.s14),
+  //       labelStyle:
+  //           getMediumStyle(color: ColorManagerLight.colorGrey1, fontSize: FontSize.s14),
+  //       errorStyle: getRegularStyle(color: ColorManagerLight.colorError),
+  //
+  //       contentPadding: const EdgeInsets.symmetric(
+  //         vertical: AppMargin.m12,
+  //         horizontal: AppMargin. m16,
+  //       ),
+  //       enabledBorder: OutlineInputBorder(
+  //         gapPadding: 0,
+  //         borderRadius: BorderRadius.circular(AppSize.s4),
+  //         borderSide:   BorderSide(color: ColorManager.colorPlaceHolderLight),
+  //       ),
+  //       disabledBorder: OutlineInputBorder(
+  //         gapPadding: 0,
+  //         borderRadius: BorderRadius.circular(AppSize.s4),
+  //         borderSide:   BorderSide(color: ColorManager.colorPlaceHolderLight),
+  //       ),
+  //
+  //       focusedErrorBorder: OutlineInputBorder(
+  //         gapPadding: 0,
+  //         borderRadius: BorderRadius.circular(AppSize.s4),
+  //         borderSide:   BorderSide(color: ColorManager.colorError),
+  //       ),
+  //       errorBorder: OutlineInputBorder(
+  //         gapPadding: 0,
+  //         borderRadius: BorderRadius.circular(AppSize.s4),
+  //         borderSide:   BorderSide(color: ColorManager.colorError),
+  //       ),
+  //       focusedBorder: OutlineInputBorder(
+  //         gapPadding: 0,
+  //         borderRadius: BorderRadius.circular(AppSize.s4),
+  //         borderSide:   BorderSide(color:ColorManager.colorPlaceHolderLight),
+  //
+  //         ))
+  //   // label style
+  // );
+  }
+
+  enum AppTheme {
+  Light,
+  Dark
+  // GreenLight,
+  // GreenDark,
+  // BlueLight,
+  // BlueDark,
+  }

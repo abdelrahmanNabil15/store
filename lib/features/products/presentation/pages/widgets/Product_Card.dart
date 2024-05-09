@@ -19,52 +19,46 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       padding:   const EdgeInsets.all(AppPadding.p8),
       decoration: BoxDecoration(
-        color: ColorManager.colorWhite,
+        color:  Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(AppSize.s10),
         boxShadow: [
           BoxShadow(
-            color: ColorManager.colorPlaceHolderLight,
+            color: Theme.of(context).disabledColor,
             blurRadius: AppSize.s10,
             spreadRadius: AppSize.s1, // Optional: Add a slight spread for a softer shadow
           ),
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
           ClipRRect(
             borderRadius: BorderRadius.circular(AppSize.s10),
-            child: Image.network(
-              image,
-              fit: BoxFit.fill,
-              height: AppSize.s140,
+            child: Center(
+              child: Image.network(
+                image,
+                fit: BoxFit.fill ,
+                height: AppSize.s140,
+              ),
             ),
           ),
           const SizedBox(height: AppSize.s10),
 
           // Product details
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align horizontally
-            children: [
-              Expanded(
-                flex: 2,
-                child: Text(
-                  title,
-            overflow: TextOverflow.ellipsis,
-                  style: getBoldStyle(color: ColorManager.colorFontPrimaryLight)
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  '\$${price.toStringAsFixed(2)}',
-                  style: getMediumStyle(color: ColorManager.colorGrey1)
-                ),
-              ),
-            ],
+          Text(
+            title,
+          overflow: TextOverflow.ellipsis,
+
+              style: Theme.of(context).textTheme.titleMedium
+          ),
+          Text(
+            '\$${price.toStringAsFixed(2)}',
+
           ),
 
           if (discount > 0) // Only show badge if there's a discount

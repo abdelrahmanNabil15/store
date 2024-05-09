@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/core/util/langauge_manager.dart';
+import 'package:store/features/products/presentation/pages/porducts_by_category.dart';
 import 'package:store/features/products/presentation/pages/product_details/product_details_view.dart';
 import 'package:store/features/products/presentation/pages/products_view.dart';
 import '../../features/authentication/presentation/pages/login_view.dart';
@@ -13,6 +14,7 @@ class Routes {
   static const String loginRoute = "/login";
   static const String allProductsRoute = "/allProduct";
   static const String productDetailsRoute = "/productDetails";
+  static const String productsByCategoryRoute = "/productsByCategoryRoute";
 }
 
 class RouteGenerator {
@@ -27,7 +29,11 @@ class RouteGenerator {
         case Routes.allProductsRoute:
         return MaterialPageRoute(builder: (_) =>   const ProductView());
         case Routes.productDetailsRoute:
-        return MaterialPageRoute(builder: (_) =>   const ProductDetailsView());
+        return MaterialPageRoute(builder: (_) =>   const ProductDetailsView(),);
+        case Routes.productsByCategoryRoute:
+        return MaterialPageRoute(builder: (_) {
+          final categoryName = settings.arguments as String?;
+          return    ProductsByCategory(categoryName: categoryName);});
       default:
         return unDefinedRoute();
     }

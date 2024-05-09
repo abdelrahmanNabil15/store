@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/app/di.dart';
 import 'package:store/core/util/color_manager.dart';
+import 'package:store/core/util/font_manager.dart';
 import 'package:store/core/util/style_manager.dart';
 import 'package:store/core/util/values_manager.dart';
 import 'package:store/core/util/widgets/Loading_dialog.dart';
@@ -20,15 +21,11 @@ class ProductDetailsView extends StatelessWidget {
         ..add(ProductDetailsEvent.fetchProductById(productId: productId!)),
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-            title: Text("details",style: getBoldStyle(
-                color: ColorManager.colorFontPrimaryDark,fontSize: AppSize.s20),),
-            elevation: 0.0,
-            iconTheme: IconThemeData(
-              color:
-                  ColorManager.colorBlack, // Change this to your desired color
-            ),
-            backgroundColor: ColorManager.colorWhite),
+
+            title: Text("details",style: Theme.of(context).textTheme.titleLarge, ),
+
+
+           ),
         body: BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
           builder: (context, state) {
             return state.maybeWhen(orElse: () {
@@ -65,23 +62,18 @@ class ProductDetailsView extends StatelessWidget {
                         ),
                         Text(
                           data.title,
-                          style: getBoldStyle(
-                              color: ColorManager.colorFontPrimaryLight,
-                              fontSize: AppSize.s24),
+                          style:Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
                           height: AppSize.s8,
                         ),
                         Text(
                           '\$${data.price}',
-                          style: getBoldStyle(
-                              color: ColorManager.colorPrimaryLight,
-                              fontSize: AppSize.s24),
+                          style: Theme.of(context).textTheme.titleLarge
                         ),
                         Text(
                           data.description,
-                          style: getRegularStyle(
-                              color: ColorManager.colorFontPrimaryLight),
+                          style:  Theme.of(context).textTheme.bodyLarge,
                         ),
                         SizedBox(
                           height: AppSize.s8,
@@ -104,7 +96,7 @@ class ProductDetailsView extends StatelessWidget {
                           "Add to Cart",
                           style: getBoldStyle(
                               color: ColorManager.colorWhite,
-                              fontSize: AppSize.s20),
+                              fontSize: FontSize.s20),
                         ),
                       ),
                     ),

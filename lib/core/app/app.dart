@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:store/core/app/di.dart';
 import 'package:store/core/util/langauge_manager.dart';
 import 'package:store/core/util/routes_manager.dart';
+import 'package:store/core/util/theme_manager.dart';
 import 'package:store/features/authentication/presentation/bloc/auth_bloc.dart';
 
 import '../../presentation/home/bloc/change_language_bloc.dart';
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
             onGenerateRoute: RouteGenerator.getRoute,
             initialRoute: Routes.splashRoute,
             debugShowCheckedModeBanner: false,
-            theme: ThemeData.light(),
+            theme: getApplicationTheme(),
           );
         },
       ),

@@ -19,32 +19,39 @@ mixin _$ProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchAllProducts,
+    required TResult Function(String? categoryName) fetchProductsByCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchAllProducts,
+    TResult? Function(String? categoryName)? fetchProductsByCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchAllProducts,
+    TResult Function(String? categoryName)? fetchProductsByCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchAllProducts value) fetchAllProducts,
+    required TResult Function(_FetchProductsByCategory value)
+        fetchProductsByCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult? Function(_FetchProductsByCategory value)? fetchProductsByCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult Function(_FetchProductsByCategory value)? fetchProductsByCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +114,7 @@ class _$FetchAllProductsImpl implements _FetchAllProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchAllProducts,
+    required TResult Function(String? categoryName) fetchProductsByCategory,
   }) {
     return fetchAllProducts();
   }
@@ -115,6 +123,7 @@ class _$FetchAllProductsImpl implements _FetchAllProducts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchAllProducts,
+    TResult? Function(String? categoryName)? fetchProductsByCategory,
   }) {
     return fetchAllProducts?.call();
   }
@@ -123,6 +132,7 @@ class _$FetchAllProductsImpl implements _FetchAllProducts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchAllProducts,
+    TResult Function(String? categoryName)? fetchProductsByCategory,
     required TResult orElse(),
   }) {
     if (fetchAllProducts != null) {
@@ -135,6 +145,8 @@ class _$FetchAllProductsImpl implements _FetchAllProducts {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchAllProducts value) fetchAllProducts,
+    required TResult Function(_FetchProductsByCategory value)
+        fetchProductsByCategory,
   }) {
     return fetchAllProducts(this);
   }
@@ -143,6 +155,7 @@ class _$FetchAllProductsImpl implements _FetchAllProducts {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult? Function(_FetchProductsByCategory value)? fetchProductsByCategory,
   }) {
     return fetchAllProducts?.call(this);
   }
@@ -151,6 +164,7 @@ class _$FetchAllProductsImpl implements _FetchAllProducts {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult Function(_FetchProductsByCategory value)? fetchProductsByCategory,
     required TResult orElse(),
   }) {
     if (fetchAllProducts != null) {
@@ -162,6 +176,145 @@ class _$FetchAllProductsImpl implements _FetchAllProducts {
 
 abstract class _FetchAllProducts implements ProductEvent {
   const factory _FetchAllProducts() = _$FetchAllProductsImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchProductsByCategoryImplCopyWith<$Res> {
+  factory _$$FetchProductsByCategoryImplCopyWith(
+          _$FetchProductsByCategoryImpl value,
+          $Res Function(_$FetchProductsByCategoryImpl) then) =
+      __$$FetchProductsByCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? categoryName});
+}
+
+/// @nodoc
+class __$$FetchProductsByCategoryImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$FetchProductsByCategoryImpl>
+    implements _$$FetchProductsByCategoryImplCopyWith<$Res> {
+  __$$FetchProductsByCategoryImplCopyWithImpl(
+      _$FetchProductsByCategoryImpl _value,
+      $Res Function(_$FetchProductsByCategoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryName = freezed,
+  }) {
+    return _then(_$FetchProductsByCategoryImpl(
+      categoryName: freezed == categoryName
+          ? _value.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchProductsByCategoryImpl implements _FetchProductsByCategory {
+  const _$FetchProductsByCategoryImpl({this.categoryName});
+
+  @override
+  final String? categoryName;
+
+  @override
+  String toString() {
+    return 'ProductEvent.fetchProductsByCategory(categoryName: $categoryName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchProductsByCategoryImpl &&
+            (identical(other.categoryName, categoryName) ||
+                other.categoryName == categoryName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, categoryName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchProductsByCategoryImplCopyWith<_$FetchProductsByCategoryImpl>
+      get copyWith => __$$FetchProductsByCategoryImplCopyWithImpl<
+          _$FetchProductsByCategoryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchAllProducts,
+    required TResult Function(String? categoryName) fetchProductsByCategory,
+  }) {
+    return fetchProductsByCategory(categoryName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchAllProducts,
+    TResult? Function(String? categoryName)? fetchProductsByCategory,
+  }) {
+    return fetchProductsByCategory?.call(categoryName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchAllProducts,
+    TResult Function(String? categoryName)? fetchProductsByCategory,
+    required TResult orElse(),
+  }) {
+    if (fetchProductsByCategory != null) {
+      return fetchProductsByCategory(categoryName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchAllProducts value) fetchAllProducts,
+    required TResult Function(_FetchProductsByCategory value)
+        fetchProductsByCategory,
+  }) {
+    return fetchProductsByCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult? Function(_FetchProductsByCategory value)? fetchProductsByCategory,
+  }) {
+    return fetchProductsByCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchAllProducts value)? fetchAllProducts,
+    TResult Function(_FetchProductsByCategory value)? fetchProductsByCategory,
+    required TResult orElse(),
+  }) {
+    if (fetchProductsByCategory != null) {
+      return fetchProductsByCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchProductsByCategory implements ProductEvent {
+  const factory _FetchProductsByCategory({final String? categoryName}) =
+      _$FetchProductsByCategoryImpl;
+
+  String? get categoryName;
+  @JsonKey(ignore: true)
+  _$$FetchProductsByCategoryImplCopyWith<_$FetchProductsByCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -5,6 +5,7 @@ class Constants {
   static const String loginUrl = "/auth/login";
   static const String getAllProductsUrl = "/products";
   static const String getSingleProductsUrl = "/products/";
+  static const String getProductsByCategoryUrl = "/products/category/";
 
   static const String empty = "";
   static const int zero = 0;

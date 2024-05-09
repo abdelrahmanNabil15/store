@@ -7,6 +7,7 @@ import 'package:store/core/util/langauge_manager.dart';
 import 'package:store/core/util/string_manager.dart';
 import 'package:store/core/util/style_manager.dart';
 import 'package:store/core/util/values_manager.dart';
+import 'package:store/features/products/presentation/pages/categories/categories_view.dart';
 import 'package:store/features/products/presentation/pages/products_view.dart';
 import 'package:store/presentation/home/bloc/change_language_bloc.dart';
 import 'package:store/presentation/home/view/widgets/ImageSlider.dart';
@@ -28,12 +29,9 @@ class HomeView extends StatelessWidget {
         lazy: false,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: ColorManager.colorWhite,
-            elevation: 0.0,
-            title: Text("Store",
-                style: getBoldStyle(
-                    color: ColorManager.colorFontPrimaryLight,
-                    fontSize: AppSize.s24)),
+
+
+            title: Text("Store",),
             actions: [
               IconButton(
                   onPressed: () {
@@ -53,20 +51,24 @@ class HomeView extends StatelessWidget {
             ],
           ),
           body: SingleChildScrollView(
-            child: Column(children: [
-              SearchTextFieldForm(),
-              ImageSlider(
-                imageUrls: [
-                  ImageAssets.slider1,
-                  ImageAssets.slider2,
-                  ImageAssets.slider3,
-                  ImageAssets.slider4,
-                  ImageAssets.slider5,
-                ],
-                imageHeight: 200,
-              ),
-              const ProductView()
-            ]),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(children: [
+                SearchTextFieldForm(),
+                ImageSlider(
+                  imageUrls: [
+                    ImageAssets.slider1,
+                    ImageAssets.slider2,
+                    ImageAssets.slider3,
+                    ImageAssets.slider4,
+                    ImageAssets.slider5,
+                  ],
+                  imageHeight: 200,
+                ),
+                CategoriesView(),
+                const ProductView()
+              ]),
+            ),
           ),
         ));
   }
