@@ -8,6 +8,7 @@ import 'package:store/core/util/langauge_manager.dart';
 import 'package:store/core/util/routes_manager.dart';
 import 'package:store/core/util/theme_manager.dart';
 import 'package:store/features/authentication/presentation/bloc/auth_bloc.dart';
+import 'package:store/presentation/home/view/settings/bloc/theme_bloc.dart';
 
 import '../../presentation/home/bloc/change_language_bloc.dart';
 
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>   instance<AuthBloc>(),
 
-        ),
+        ), BlocProvider(
+    create: (context) => instance<ThemeBloc>(),)
       ],
       child: BlocBuilder<ChangeLanguageBloc, ChangeLanguageState>(
         builder: (context, state) {
@@ -58,12 +60,13 @@ class MyApp extends StatelessWidget {
                   return deviceLocale;
                 }
               }
+              
               return supportedLocales.first;
             },
             onGenerateRoute: RouteGenerator.getRoute,
             initialRoute: Routes.splashRoute,
             debugShowCheckedModeBanner: false,
-            theme: getApplicationTheme(),
+            theme:getApplicationTheme(),
           );
         },
       ),

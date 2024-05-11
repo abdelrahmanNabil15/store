@@ -7,6 +7,7 @@ class ChangeLanguageState {
   ChangeLanguageState({this.locale}) {
     locale ??= _appPref.getLocal();
   }
+  initialThemeState({required ThemeData themeData } ) {}
 
   copyWith({Locale? locale}) {
     return ChangeLanguageState(

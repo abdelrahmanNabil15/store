@@ -88,15 +88,11 @@ class ProductDetailsView extends StatelessWidget {
                       margin: const EdgeInsets.all(5),
                       width: double.infinity,
                       child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                ColorManager.colorPrimaryLight)),
+
                         onPressed: () {},
                         child: Text(
                           "Add to Cart",
-                          style: getBoldStyle(
-                              color: ColorManager.colorWhite,
-                              fontSize: FontSize.s20),
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                       ),
                     ),

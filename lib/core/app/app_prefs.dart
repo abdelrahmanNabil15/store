@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:store/core/util/langauge_manager.dart';
 
@@ -15,6 +16,7 @@ class AppPreferences {
   final SharedPreferences _sharedPreferences;
 
   AppPreferences(this._sharedPreferences);
+  String kTheme = "theme";
 
   String getAppLanguage() {
     String? language = _sharedPreferences.getString(PREFS_KEY_LANG);
@@ -51,7 +53,13 @@ class AppPreferences {
       return ENGLISH_LOCAL;
     }
   }
+ bool isDark()  {
 
+    return _sharedPreferences.getBool("is_dark") ?? false;
+  }
+  Future<void> setTheme(bool isDark) async {
+    _sharedPreferences.setBool("is_dark", !isDark);
+  }
   //OnBoarding
   // Future<void> setOnBoardingScreenViewed() async {
   //   _sharedPreferences.setBool(PREFS_KEY_ON_BOARDING_SCREEN_VIEWED, true);
@@ -71,10 +79,34 @@ class AppPreferences {
     return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
   }
 
+  Future<void> cacheThemeIndex(int themeIndex) async {
+
+    _sharedPreferences.setInt("THEME_INDEX", themeIndex);
+  }
+
+  Future<int> getCachedThemeIndex() async {
+
+    final cachedThemeIndex = _sharedPreferences.getInt("THEME_INDEX");
+    if (cachedThemeIndex != null) {
+      return cachedThemeIndex;
+    } else {
+      return 0;
+    }
+  }
+  String get theme => _sharedPreferences.getString(kTheme) ?? ActiveTheme.system.name;
   // //register
   //
   //
   // Future<void> logout() async {
   //   _sharedPreferences.remove(PREFS_KEY_IS_USER_LOGGED_IN);
   // }
+}
+enum ActiveTheme {
+  light(ThemeMode.light),
+  dark(ThemeMode.dark),
+  system(ThemeMode.system);
+
+  final ThemeMode mode;
+
+  const ActiveTheme(this.mode);
 }

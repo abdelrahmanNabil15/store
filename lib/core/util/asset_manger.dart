@@ -8,6 +8,8 @@ class ImageAssets {
   static String slider3 = "$IMAGE_PATH/slider3.jpg";
   static String slider4 = "$IMAGE_PATH/slider4.jpg";
   static String slider5 = "$IMAGE_PATH/slider5.jpg";
+  static String splashIcon = "$IMAGE_PATH/splash_icon.png";
+  static String menuIcon = "$IMAGE_PATH/menu_icon.svg";
 }
 
 class JsonAssets {

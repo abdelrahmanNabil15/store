@@ -1,12 +1,129 @@
 import 'package:flutter/material.dart';
+import 'package:store/core/app/app_prefs.dart';
+import 'package:store/core/app/di.dart';
 import 'package:store/core/util/ColorManager/color_app_dark.dart';
 
 import 'ColorManager/color_app_light.dart';
-import 'color_manager.dart';
 import 'font_manager.dart';
 import 'style_manager.dart';
 import 'values_manager.dart';
+enum AppTheme {
+  blueLight(' Light'),
+  blueDark("  Dark"),
+  redDark("Red Dark");
 
+  const AppTheme(this.name);
+  final String name;
+}
+final appThemeData = {
+  AppTheme.blueLight:ThemeData(
+    primaryColor: ColorManagerLight.colorPrimary,
+    cardColor: ColorManagerLight.colorCard,
+    scaffoldBackgroundColor: ColorManagerLight.colorBackground,
+    disabledColor: ColorManagerLight.colorGrey1,
+    drawerTheme: DrawerThemeData(
+      backgroundColor: ColorManagerLight.colorBackground,
+    ),
+    appBarTheme: AppBarTheme(
+        centerTitle: true,
+        backgroundColor: ColorManagerLight.colorBackground,
+        iconTheme: IconThemeData(
+          color: ColorManagerLight.colorBlack,
+        ),
+        elevation: 0.0,
+        titleTextStyle: getBoldStyle(
+            fontSize: FontSize.s22, color: ColorManagerLight.fontPrimary)),
+    cardTheme: CardTheme(
+        color: ColorManagerLight.colorWhite,
+        shadowColor: ColorManagerLight.colorPlaceHolder,
+        elevation: AppSize.s4),
+    buttonTheme: ButtonThemeData(
+        shape: const StadiumBorder(),
+        disabledColor: ColorManagerLight.colorGrey1,
+        buttonColor: ColorManagerLight.colorPrimary,
+        splashColor: ColorManagerLight.colorPrimary),
+
+    // elevated button them
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            textStyle: getRegularStyle(
+                color: ColorManagerLight.fontPrimary, fontSize: FontSize.s17),
+            backgroundColor: ColorManagerLight.colorPrimary,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSize.s12)))),
+
+    // text button them
+    textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: ColorManagerLight.colorPrimary,
+
+          textStyle: getMediumStyle(
+              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+          // splashFactory: NoSplash.splashFactory
+        )),
+
+    // text theme
+    textTheme: TextTheme(
+      displayLarge: getSemiBoldStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      headlineLarge: getSemiBoldStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      headlineMedium: getRegularStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s14),
+      titleMedium: getMediumStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      titleLarge: getBoldStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s22),
+      titleSmall: getRegularStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      bodyLarge: getRegularStyle(color: ColorManagerLight.fontPrimary),
+      bodySmall: getRegularStyle(color: ColorManagerLight.fontPrimary),
+      bodyMedium: getRegularStyle(
+          color: ColorManagerLight.colorGrey1, fontSize: FontSize.s12),
+      labelSmall: getBoldStyle(
+          color: ColorManagerLight.colorPrimary, fontSize: FontSize.s12),
+    ),
+    // input decoration theme (text form field)
+    inputDecorationTheme: InputDecorationTheme(
+      // content padding
+        contentPadding: const EdgeInsets.all(AppPadding.p8),
+        // hint style
+        hintStyle: getRegularStyle(
+            color: ColorManagerLight.colorPlaceHolder, fontSize: FontSize.s14),
+        labelStyle: getMediumStyle(
+            color: ColorManagerLight.colorGrey1, fontSize: FontSize.s14),
+        errorStyle: getRegularStyle(color: ColorManagerLight.colorError),
+
+        // enabled border style
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: ColorManagerLight.colorGrey1, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
+
+        // focused border style
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: ColorManagerLight.colorPrimary, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
+
+        // error border style
+        errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: ColorManagerLight.colorError, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
+        // focused border style
+        focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: ColorManagerLight.colorPrimary, width: AppSize.s1_5),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
+  ),
+  AppTheme.blueDark: DarkModeTheme().themeData,
+  AppTheme.redDark: ThemeData(
+    appBarTheme: AppBarTheme(backgroundColor: Colors.red[700]),
+    brightness: Brightness.dark,
+    primaryColor: Colors.red[700],
+  ),
+};
 abstract class MainThemeApp {
   late ThemeData themeData;
 }
@@ -18,10 +135,15 @@ class LightModeTheme implements MainThemeApp {
     cardColor: ColorManagerLight.colorCard,
     scaffoldBackgroundColor: ColorManagerLight.colorBackground,
     disabledColor: ColorManagerLight.colorGrey1,
+    drawerTheme: DrawerThemeData(
+      backgroundColor: ColorManagerLight.colorBackground,
+    ),
     appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: ColorManagerLight.colorBackground,
-        iconTheme: IconThemeData(color: ColorManagerLight.colorBlack,),
+        iconTheme: IconThemeData(
+          color: ColorManagerLight.colorBlack,
+        ),
         elevation: 0.0,
         titleTextStyle: getBoldStyle(
             fontSize: FontSize.s22, color: ColorManagerLight.fontPrimary)),
@@ -29,89 +151,83 @@ class LightModeTheme implements MainThemeApp {
         color: ColorManagerLight.colorWhite,
         shadowColor: ColorManagerLight.colorPlaceHolder,
         elevation: AppSize.s4),
-      buttonTheme: ButtonThemeData(
-          shape: const StadiumBorder(),
-          disabledColor: ColorManagerLight.colorGrey1,
-          buttonColor: ColorManagerLight.colorPrimary,
-          splashColor: ColorManagerLight.colorPrimary),
+    buttonTheme: ButtonThemeData(
+        shape: const StadiumBorder(),
+        disabledColor: ColorManagerLight.colorGrey1,
+        buttonColor: ColorManagerLight.colorPrimary,
+        splashColor: ColorManagerLight.colorPrimary),
 
-      // elevated button them
-      elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-              textStyle: getRegularStyle(
-                  color: ColorManagerLight.fontPrimary, fontSize: FontSize.s17),
-              backgroundColor: ColorManagerLight.colorPrimary,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppSize.s12)))),
+    // elevated button them
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            textStyle: getRegularStyle(
+                color: ColorManagerLight.fontPrimary, fontSize: FontSize.s17),
+            backgroundColor: ColorManagerLight.colorPrimary,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSize.s12)))),
 
-      // text button them
-      textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            foregroundColor: ColorManagerLight.colorPrimary,
+    // text button them
+    textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+      foregroundColor: ColorManagerLight.colorPrimary,
 
-            textStyle: getMediumStyle(color: ColorManagerDark.fontPrimary,
-                fontSize: FontSize.s16),
-            // splashFactory: NoSplash.splashFactory
-          )
-      ),
+      textStyle: getMediumStyle(
+          color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+      // splashFactory: NoSplash.splashFactory
+    )),
 
-
-      // text theme
-      textTheme: TextTheme(
-        displayLarge: getSemiBoldStyle(
-            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
-        headlineLarge: getSemiBoldStyle(
-            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
-        headlineMedium: getRegularStyle(
-            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s14),
-        titleMedium: getMediumStyle(
-            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
-        titleLarge: getBoldStyle(
-            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s22),
-        titleSmall: getRegularStyle(
-            color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
-        bodyLarge: getRegularStyle(color: ColorManagerLight.fontPrimary),
-        bodySmall: getRegularStyle(color: ColorManagerLight.fontPrimary),
-        bodyMedium: getRegularStyle(
-            color: ColorManagerLight.colorGrey1, fontSize: FontSize.s12),
-        labelSmall: getBoldStyle(
-            color: ColorManagerLight.colorPrimary, fontSize: FontSize.s12),),
+    // text theme
+    textTheme: TextTheme(
+      displayLarge: getSemiBoldStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      headlineLarge: getSemiBoldStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      headlineMedium: getRegularStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s14),
+      titleMedium: getMediumStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      titleLarge: getBoldStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s22),
+      titleSmall: getRegularStyle(
+          color: ColorManagerLight.fontPrimary, fontSize: FontSize.s16),
+      bodyLarge: getRegularStyle(color: ColorManagerLight.fontPrimary),
+      bodySmall: getRegularStyle(color: ColorManagerLight.fontPrimary),
+      bodyMedium: getRegularStyle(
+          color: ColorManagerLight.colorGrey1, fontSize: FontSize.s12),
+      labelSmall: getBoldStyle(
+          color: ColorManagerLight.colorPrimary, fontSize: FontSize.s12),
+    ),
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
-      // content padding
+        // content padding
         contentPadding: const EdgeInsets.all(AppPadding.p8),
         // hint style
         hintStyle: getRegularStyle(
             color: ColorManagerLight.colorPlaceHolder, fontSize: FontSize.s14),
-        labelStyle:
-        getMediumStyle(
+        labelStyle: getMediumStyle(
             color: ColorManagerLight.colorGrey1, fontSize: FontSize.s14),
         errorStyle: getRegularStyle(color: ColorManagerLight.colorError),
 
         // enabled border style
         enabledBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(
+            borderSide: BorderSide(
                 color: ColorManagerLight.colorGrey1, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
 
         // focused border style
         focusedBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(
+            borderSide: BorderSide(
                 color: ColorManagerLight.colorPrimary, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
 
         // error border style
         errorBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(
+            borderSide: BorderSide(
                 color: ColorManagerLight.colorError, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
         // focused border style
         focusedErrorBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(
+            borderSide: BorderSide(
                 color: ColorManagerLight.colorPrimary, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
   );
@@ -125,7 +241,6 @@ class DarkModeTheme implements MainThemeApp {
       scaffoldBackgroundColor: ColorManagerDark.colorBackground,
       disabledColor: ColorManagerDark.colorGrey1,
 
-
       // cardView theme
       cardTheme: CardTheme(
           color: ColorManagerDark.colorWhite,
@@ -136,7 +251,9 @@ class DarkModeTheme implements MainThemeApp {
       appBarTheme: AppBarTheme(
           centerTitle: true,
           backgroundColor: ColorManagerDark.colorBackground,
-          iconTheme: IconThemeData(color: ColorManagerDark.colorWhite,),
+          iconTheme: IconThemeData(
+            color: ColorManagerDark.colorWhite,
+          ),
           elevation: 0.0,
           titleTextStyle: getBoldStyle(
               fontSize: FontSize.s22, color: ColorManagerDark.fontPrimary)),
@@ -160,42 +277,44 @@ class DarkModeTheme implements MainThemeApp {
       // text button them
       textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
-            foregroundColor: ColorManagerDark.colorPrimary,
+        foregroundColor: ColorManagerDark.colorPrimary,
 
-            textStyle: getMediumStyle(color: ColorManagerDark.fontPrimary,
-                fontSize: FontSize.s16),
-            // splashFactory: NoSplash.splashFactory
-          )
-      ),
-
+        textStyle: getMediumStyle(
+            color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+        // splashFactory: NoSplash.splashFactory
+      )),
 
       // text theme
       textTheme: TextTheme(
-          displayLarge: getSemiBoldStyle(
-              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
-          headlineLarge: getSemiBoldStyle(
-              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
-          headlineMedium: getRegularStyle(
-              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s14),
-          titleMedium: getMediumStyle(
-              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
-          titleLarge: getBoldStyle(
-              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s22),
-          titleSmall: getRegularStyle(
-              color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
-          bodyLarge: getRegularStyle(color: ColorManagerDark.fontPrimary),
-          bodySmall: getRegularStyle(color: ColorManagerDark.fontPrimary),
-          bodyMedium: getRegularStyle(
-              color: ColorManagerDark.colorGrey1, fontSize: FontSize.s12),
-          labelSmall: getBoldStyle(
-              color: ColorManagerDark.colorPrimary, fontSize: FontSize.s12),));
+        displayLarge: getSemiBoldStyle(
+            color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+        headlineLarge: getSemiBoldStyle(
+            color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+        headlineMedium: getRegularStyle(
+            color: ColorManagerDark.fontPrimary, fontSize: FontSize.s14),
+        titleMedium: getMediumStyle(
+            color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+        titleLarge: getBoldStyle(
+            color: ColorManagerDark.fontPrimary, fontSize: FontSize.s22),
+        titleSmall: getRegularStyle(
+            color: ColorManagerDark.fontPrimary, fontSize: FontSize.s16),
+        bodyLarge: getRegularStyle(color: ColorManagerDark.fontPrimary),
+        bodySmall: getRegularStyle(color: ColorManagerDark.fontPrimary),
+        bodyMedium: getRegularStyle(
+            color: ColorManagerDark.colorGrey1, fontSize: FontSize.s12),
+        labelSmall: getBoldStyle(
+            color: ColorManagerDark.colorPrimary, fontSize: FontSize.s12),
+      ));
+}
 
-
-      }
-
-      ThemeData getApplicationTheme() {
-  return LightModeTheme().themeData;
-
+final AppPreferences _appPref = instance<AppPreferences>();
+final bool hasDarkTheme =   _appPref. isDark();
+ ThemeData getApplicationTheme()   {
+  if (   hasDarkTheme) {
+    return LightModeTheme().themeData;
+  } else {
+    return LightModeTheme().themeData;
+  }
   //   ThemeData(
   //   // main colors
   //   primaryColor: ColorManagerLight.colorPrimary,
@@ -331,13 +450,5 @@ class DarkModeTheme implements MainThemeApp {
   //         ))
   //   // label style
   // );
-  }
+}
 
-  enum AppTheme {
-  Light,
-  Dark
-  // GreenLight,
-  // GreenDark,
-  // BlueLight,
-  // BlueDark,
-  }

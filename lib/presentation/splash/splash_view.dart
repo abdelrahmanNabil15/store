@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:store/core/app/app_prefs.dart';
 import 'package:store/core/app/di.dart';
+import 'package:store/core/util/ColorManager/color_app_light.dart';
+import 'package:store/core/util/asset_manger.dart';
+import 'package:store/core/util/values_manager.dart';
 
 import '../../core/util/routes_manager.dart';
 final AppPreferences _appPref = instance<AppPreferences>();
@@ -19,8 +22,9 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Center(
-        child: Text('Splash'),
+        child: Image.asset(ImageAssets.splashIcon ,height: AppSize.s190,width:AppSize.s190 ,),
       ),
     );
   }

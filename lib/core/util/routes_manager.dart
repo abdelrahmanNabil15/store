@@ -3,6 +3,7 @@ import 'package:store/core/util/langauge_manager.dart';
 import 'package:store/features/products/presentation/pages/porducts_by_category.dart';
 import 'package:store/features/products/presentation/pages/product_details/product_details_view.dart';
 import 'package:store/features/products/presentation/pages/products_view.dart';
+import 'package:store/presentation/home/view/settings/settings_view.dart';
 import '../../features/authentication/presentation/pages/login_view.dart';
 import '../../presentation/home/view/home_view.dart';
 import '../../presentation/splash/splash_view.dart';
@@ -15,6 +16,7 @@ class Routes {
   static const String allProductsRoute = "/allProduct";
   static const String productDetailsRoute = "/productDetails";
   static const String productsByCategoryRoute = "/productsByCategoryRoute";
+  static const String settingsView = "/settingsView";
 }
 
 class RouteGenerator {
@@ -30,6 +32,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) =>   const ProductView());
         case Routes.productDetailsRoute:
         return MaterialPageRoute(builder: (_) =>   const ProductDetailsView(),);
+        case Routes.settingsView:
+        return MaterialPageRoute(builder: (_) =>   const SettingsView(),);
         case Routes.productsByCategoryRoute:
         return MaterialPageRoute(builder: (_) {
           final categoryName = settings.arguments as String?;

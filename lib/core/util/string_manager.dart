@@ -1,6 +1,7 @@
 class AppStrings {
   static const strNoRouteFound = "no_route_found";
   static const strAppName = "app_name";
+  static const appName = "Go Store";
 
 
   static const String success = "success";

@@ -15,6 +15,7 @@ import 'package:store/features/products/domain/usecase/get_product_by_category.d
 import 'package:store/features/products/domain/usecase/get_single_product.dart';
 import 'package:store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:store/features/products/presentation/bloc/product_details_bloc/product_details_bloc.dart';
+import 'package:store/presentation/home/view/settings/bloc/theme_bloc.dart';
 
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
@@ -73,6 +74,7 @@ void bloc() {
 
   ///
   instance.registerFactory(() => AuthBloc(instance()));
+  instance.registerFactory(() => ThemeBloc( ));
   instance.registerFactory(() => ProductBloc(instance(),instance()));
   instance.registerFactory(() => ProductDetailsBloc(instance()));
 
